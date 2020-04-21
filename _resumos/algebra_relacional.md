@@ -7,6 +7,10 @@
     - [PROJECT](#PROJECT-(π))
     - [RENAME](#RENAME-(⍴))
 - [Teoria dos conjuntos](#Teoria-dos-conjuntos)
+    - [UNION](#UNION-(⋃))
+    - [INTERSECTION](#INTERSECTION-(⋂))
+    - [SET DIFFERENCE](#SET-DIFFERNCE-ou-MINUS)
+    - [CARTESIAN PRODUCT](#CARTESINA-(ou-CROSS)-PRODUCT(X))
 
 
 
@@ -19,15 +23,15 @@ Dentro da linguagem [**`SQL`**](https://pt.wikipedia.org/wiki/SQL), existem as s
 As operações da álgebra relacional podem ser divididas em dois principais grupos:
     
 1. **Teoria dos conjuntos:** 
-    - [UNION]();
-    - [INTERSECTION]();
-    - [SET DIFFERENCE]();
-    - [CARTESIAN PRODUCT]().
+    - [UNION](#UNION-(⋃));
+    - [INTERSECTION](#INTERSECTION-(⋂));
+    - [SET DIFFERENCE](#SET-DIFFERNCE-ou-MINUS);
+    - [CARTESIAN PRODUCT](#CARTESINA-(ou-CROSS)-PRODUCT(X)).
 
 2. **Específicas para Bases de dados:** 
     - [SELECT](#select-(σ));
-    - [PROJECT]();
-    - [JOIN]().
+    - [PROJECT](#PROJECT-(π));
+    - [JOIN](#RENAME-(⍴)).
 ---
 ## Operações Relacionais Unárias
 ---
@@ -65,7 +69,7 @@ Onde:
 - **(R):** Relação na qual será feita a operação.
 
 
-**Comutatividade:** A operação `project` **não** é comutativa.
+**Comutatividade:** A operação project **não** é comutativa.
 
 > :warning: **OBS:** A π pode produzir tuplas iguais, caso as chaves sejam descartadas. A álgebra relacional exclui tuplas repetidas, todavia o SQL não.
 
@@ -93,33 +97,103 @@ Relações de exemplo:
 
 
 ### **UNION (⋃)**
-A operação de união junta as tuplas de uma relação R com as tuplas de uma relação S e cria uma nova relação **R ⋃ S**, onde não há tuplas duplicadas. Essa operação só ocorre caso as relações apresentarem os mesmo tipo e o [domínio](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_resumos/modelos_relacionais.md#dom%C3%ADnio).
+A operação de união junta as tuplas de uma relação R com as tuplas de uma relação S e cria uma nova relação `R ⋃ S`, onde não há tuplas duplicadas. Essa operação só ocorre caso as relações apresentarem os mesmo tipo e o [domínio](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_resumos/modelos_relacionais.md#dom%C3%ADnio).
 
 - **Comutatividade = TRUE:** R ⋃ S == S ⋃ R
 - **Associatividade = TRUE:** (R ⋃ S) ⋃ T ==  R ⋃ (S ⋃ T)
 
+### **INTERSECTION (⋂)**
+A operação que cria uma nova relação que contém apenas as tuplas que pertencem tanto a uma relação R como a uma outra relação S, sendo denotada como `R ⋂ S`.
+
+- **Comutatividade = TRUE:** R ⋂ S == S ⋂ R
+- **Associatividade = TRUE:** (R ⋂ S) ⋂ T ==  R ⋂ (S ⋂ T)
+
+### **SET DIFFERNCE ou MINUS**
+Operação `R - S` que produz como resultado todas as tuplas que estão em R mas não estão em S.
+- **Comutatividade = FALSE:** R - S != S - R
+
+### **CARTESINA (ou CROSS) PRODUCT(X)**
+Essa operação `R X S` produz uma nova relação Z formada pela combinação de todas as tuplas de R com as tuplas de S,resultando em na relação Z que possui:
+
+Essa operação é representada da seguinte forma:
+
+        Z <- R X S
+
+Onde:
+- **X:** Símbolo que representa a operação de produto cartesiano;
+- **Z:** Relação produzida a partir do produto cartesiano;
+- **R e S:** RElações participantes da operação.
 
 
 
+**n° tuplas:** n° tuplas de R * n° tuplas de S;
 
+**Ordem:** n° atributos de R + n° atributos de S.
 
+> :warning: **OBS:** O produto cartesiano por si só *não* traz conhecimento **real** por si só, sendo necessária à utilização do SELECT, por exemplo, para filtrar os dados que podem ter algum significado.
 
+---
+## Operações Relacionais Binárias
+---
+São operações que envolvem a manipulação de *duas* relações.
 
+### **JOIN (⋈)**
+Essa operação engloba as operações de [produto cartesiano](#CARTESINA-(ou-CROSS)-PRODUCT(X)) seguida pela operação de [select](#SELECT-(σ)), devido ao fato de dessa sequência de operações ser muito utilizada.
 
+Essa operação é representada da seguinte maneira:
 
+        DEPARTMENT ⋈ Mgr_ssn = Ssn EMPLOYEE
 
+Onde:
+- **⋈:** Símbolo que representa a operação de JOIN;
+- **Mgr_ssn = Ssn:** Condição de seleção;
+- **Department e employee:** Relações sobre as quais a operação será feita.
 
+- **n° tuplas:** desde n° tuplas de R * n° tuplas tuplas S até 0, caso a *condição* imposta nunca seja satisfeita.
 
+- **Ordem:** n° atributos de R + n° atributos atributos de S.
 
+### **EQUIJOIN**
+Variação do [JOIN](#JOIN-(⋈)), onde o operador de condição utilizado é o `=`. Como o operador utilizado é o =, a relação resultante apresentará 2 colunas de atributos com os mesmos valores.
 
+### **NATURAL JOIN (*)**
+Operação criada para excluir a segunda coluna repetida do [EQUIJOIN](#equijoin).
 
+Essa operação se organiza da seguinte maneira:
 
+    NOVA_REL <- R * <condição1 AND condição2> S
 
+Onde:
+- **NOVA_REL:** Relação resultante;
+- **R e S:** Relações sobre as quais a operação será realzada;
+- *: Símblo da operação natural join;
+- <**condição1 AND condição2**>: Condições que ditarão como será feita a seleção das tuplas., chamado de `THETA_JOIN`.
 
+> :warning: **OBS:** Para que essa operação funcione é necessário que o nome dos atributos que vão ser comparados sejam iguais.
 
+### DIVISION (÷):
+A operação R ÷ S funciona da seguinte maneira. sendo o conjunto de atributos de S um subconjunto dos atributos de R, R ÷ S pega todos os valores das tuplas de R que se conseguem abranger  TODAS as tuplas de S e cria uma nova relação a partir disso.
 
+**Exemplo:**
 
+FUNCIONÁRIO
+| Nome | Proj_n | SSN |
+| --- | --- | --- |
+| regis | 1 | 1234 |
+| regis | 2 | 1234 |
+| Bia | 1 | 7410 |
+| Bia | 3 | 7410 |
 
+PROJETOS
+| Proj_n |
+| --- |
+| 1 |
+| 2 |
+
+FUNCIONÁRIO ÷ PROJETOS
+| Nome | SSN |
+| --- | --- |
+| Regis | 1234 |
 
 ## Expressões in-line e relações intermediárias
 
