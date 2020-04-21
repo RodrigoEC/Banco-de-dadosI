@@ -13,9 +13,9 @@
     - [Mini-Mundo](#mini-mundo)
     - [Grau de uma relação](#grau)
 - [Constraints](#constraints)
-    - [Restrições Implícitas](#1.Restrições-implícitas)
-    - [Restrições Explícitas](#2.Restrições-explícitas)
-    - [Restrições Semânticas](#3.Restrições-semânticas)
+    - [Restrições Implícitas](#restrições-implícitas)
+    - [Restrições Explícitas](#restrições-explícitas)
+    - [Restrições Semânticas](#restrições-semânticas)
 - [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
     - [Restrições de Domínio](#restrições-de-domínio)
     - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
@@ -85,17 +85,17 @@ Número de atributos de uma relação.
 As constraints, ou restrições, são o conjunto de regras que os valores dentro das relações podem assumir, de acordo com o mini-mundo sobre o qual aquelas relações foram criadas. 
 
 As constraints podem ser divididas em três principais categorias:
-### 1.Restrições Implícitas 
+### Restrições Implícitas 
 Restrições que são inerentes ao modelo relacional de dados.
 
 > *Ex:* Tuplas repetidas. Relações são conjuntos de tuplas, então não é permitida a repetição de elementos.
 
-### 2.Restrições Explícitas
+### Restrições Explícitas
 Restrições que já podem ser diretamente deduzidas a partir do esquema da relação.
 
 > *Ex:* A partir do esquema de relações da relação ALUNO, por exemplo, já é possível saber que o atributo “matrícula" apenas suporta uma entrada, ou seja, um aluno possui apenas uma matrícula.
 
-### 3.Restrições Semânticas
+### Restrições Semânticas
 São restrições que não podem ser diretamente especificadas pelo esquema das relações.
 
 > *Ex:* Em uma relação “Aluno” existe o atributo “curso” que só suporta strings que representam os cursos existentes na universidade, todavia, é impossível saber quais são esses valores apenas olhando o **[esquema das relações](#esquema-da-relação)**.
