@@ -23,13 +23,17 @@
 
 ## Conceitos Iniciais
 
-Aluno
+Exemplo de Relação:
+
+**Aluno**
 |Nome|Matrícula|idade|curso|
 | --- | --- | --- | --- |
 | Joana | 118241501 | 21 | Engenharia Elétrica |
 | Rodrigo | 118210111 | 20 | Ciência da Computação |
 | Leonardo | 115210114 | 28 | Arquitetura e Urbanismo |
 | Leandra | 118547124 | 20 | Ciência da Computação |
+
+**Esquema:** Aluno(Nome, Matrícula, Idade, Curso)
 
 
 ### **Tupla** 
@@ -43,7 +47,7 @@ Uma coluna da tabela que representa uma característica das entidades existentes
 
 ### **Esquema da relação** 
 O esquema R(a1,a2..ai) é formado pelo nome da relação (R) e pela lista de atributos.
-    > *Ex:* Universitario(Nome, Matrícula, idade)
+    > *Ex:* Aluno (Nome, Matrícula, idade, curso)
 
 ### **Chaves** 
 Chaves são atributos que tem a capacidade de identificar unicamente uma tupla. Chaves podem ser divididas em:
@@ -82,10 +86,10 @@ As constraints podem ser divididas em três principais categorias:
     > *Ex:* Tuplas repetidas. Relações são conjuntos de tuplas, então não é permitida a repetição de elementos.
 
 2. **Restrições Explícitas:** Restrições que já podem ser diretamente deduzidas a partir do esquema da relação.
-    > *Ex:* A partir do esquema de relações de uma relação FILME, por exemplo, já é possível saber que o atributo “duração" apenas suporta uma entrada, ou seja, o filme só tem uma duração
+    > *Ex:* A partir do esquema de relações da relação ALUNO, por exemplo, já é possível saber que o atributo “matrícula" apenas suporta uma entrada, ou seja, um aluno possui apenas uma matrícula.
 
 3. **Restrições Semânticas:** São restrições que não podem ser diretamente especificadas pelo esquema das relações.
-    > *Ex:* Em uma relação “FUNCIONÁRIO” existe o atributo “função” que não pode receber todo tipo de valor, todavia, é impossível saber quais são esses valores apenas olhando o esquema das relações, ou seja, o nome da relação e o seu conjunto com o nome das tuplas. 
+    > *Ex:* Em uma relação “Aluno” existe o atributo “curso” que só suporta strings que representam os cursos existentes na universidade, todavia, é impossível saber quais são esses valores apenas olhando o **[esquema das relações](#esquema-da-relação)**.
 
 ## Restrições de Integridade relacional:
 
