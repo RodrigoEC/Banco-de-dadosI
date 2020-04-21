@@ -2,42 +2,76 @@
 
 ## Índice
 - [Conceitos Iniciais](#conceitos-iniciais)
+    - [Tupla](#tupla)
+    - [Relação](#relação)
+    - [Atributo](#atributo)
+    - [Esquema da relação](#esquema-da-relação)
+    - [Chaves](#chaves)
 - [Conceitos Auxiliares](#conceitos-auxiliares)
+    - [Domínio](#domínio)
+    - [Valores Atômicos](#valores-atômicos)
+    - [Mini-Mundo](#mini-mundo)
+    - [Grau de uma relação](#grau)
 - [Constraints](#constraints)
+- [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
+    - [Restrições de Domínio](#restrições-de-domínio)
+    - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
+    - [Restrição de integridade da referência](#restrição-de-integridade-da-referência)
 
 
 
 
 ## Conceitos Iniciais
-- **Tupla:** Lista *ordenada* de valores pertencentes a um domínio. Cada tupla representa uma entidade do **[mini-mundo](#conceitos-auxiliares)** que relação que ela está inserida aborda
 
-- **Relação:** Conjunto, não ordenado, de tuplas {t1, t2, ... , tn}. Cada relação possui um **[Grau](#conceitos-auxiliares)**.
+Aluno
+|Nome|Matrícula|idade|curso|
+| --- | --- | --- | --- |
+| Joana | 118241501 | 21 | Engenharia Elétrica |
+| Rodrigo | 118210111 | 20 | Ciência da Computação |
+| Leonardo | 115210114 | 28 | Arquitetura e Urbanismo |
+| Leandra | 118547124 | 20 | Ciência da Computação |
 
-- **Atributo:** Uma coluna da tabela que representa uma característica das entidades existentes na relação. Cada atributo possui um **[domínio](#conceitos-auxiliares)** e apresenta apenas **[Valores Atômicos](#conceitos-auxiliares)**.
 
-- **Esquema da relação:** O esquema R(a1,a2..ai) é formado pelo nome da relação (R) e pela lista de atributos.
+### **Tupla** 
+Lista *ordenada* de valores pertencentes a um domínio. Cada tupla representa uma entidade do **[mini-mundo](#conceitos-auxiliares)** que relação que ela está inserida aborda
+
+### **Relação** 
+Conjunto, não ordenado, de tuplas {t1, t2, ... , tn}. Cada relação possui um **[Grau](#conceitos-auxiliares)**.
+
+### **Atributo** 
+Uma coluna da tabela que representa uma característica das entidades existentes na relação. Cada atributo possui um **[domínio](#conceitos-auxiliares)** e apresenta apenas **[Valores Atômicos](#conceitos-auxiliares)**.
+
+### **Esquema da relação** 
+O esquema R(a1,a2..ai) é formado pelo nome da relação (R) e pela lista de atributos.
     > *Ex:* Universitario(Nome, Matrícula, idade)
 
-- **Chaves:** Chaves são atributos que tem a capacidade de identificar unicamente uma tupla. Chaves podem ser divididas em:
-    - **Super Chaves:** Conjunto atributos que **juntos** funcionam como identificador único, mas sozinhos não (a não ser que o conjunto seja unitário, claro).
+### **Chaves** 
+Chaves são atributos que tem a capacidade de identificar unicamente uma tupla. Chaves podem ser divididas em:
 
-    - **Super chave mínima:** Super chave formada por apenas um atributo, ou seja, uma chave "comum".
+- **Super Chaves:** Conjunto atributos que **juntos** funcionam como identificador único, mas sozinhos não (a não ser que o conjunto seja unitário, claro).
 
-    - **Chave primária(PK):** Atributo da tabela que serve como chave. Chaves primárias não podem assumir valores **NULL**.
+- **Super chave mínima:** Super chave formada por apenas um atributo, ou seja, uma chave "comum".
 
-    - **Chave estrangeira(FK):** São atributos de uma relação que referenciam chaves primárias de outras relações, ou seja, a FK de uma relação é a PK de outra.
+- **Chave primária(PK):** Atributo da tabela que serve como chave. Chaves primárias não podem assumir valores **NULL**.
+
+- **Chave estrangeira(FK):** São atributos de uma relação que referenciam chaves primárias de outras relações, ou seja, a FK de uma relação é a PK de outra.
 
 
 ## Conceitos Auxiliares
 
-- **Domínio:** Valores que cada *atributo* da relação pode receber, como *tipo* ou uma *seleção específica de valores*, a  partir das restrições que são determinadas.
+### **Domínio** 
+Valores que cada *atributo* da relação pode receber, como *tipo* ou uma *seleção específica de valores*, a  partir das restrições que são determinadas.
 
-- **Valores atômicos:** Em uma relação os valores tem que ser únicos, atômicos.
-    > *Ex:* Cliente(nome, cpf, telefone). O cliente não pode ter o atributo *telefone* com mais de 1 telefone cadastrado, para que isso seja possível é preciso criar outra relação **Telefone** com uma chave estrangeira que referencia o Cliente.
+### **Valores atômicos** 
+Em uma relação os valores tem que ser únicos, atômicos.
 
-- **Mini-Mundo:** Parte do mundo real que a relação aborda
+> *Ex:* Cliente(nome, cpf, telefone). O cliente não pode ter o atributo *telefone* com mais de 1 telefone cadastrado, para que isso seja possível é preciso criar outra relação **Telefone** com uma chave estrangeira que referencia o Cliente.
 
-- **Grau:** Número de atributos de uma relação.
+### **Mini-Mundo** 
+Parte do mundo real que a relação aborda
+
+### **Grau** 
+Número de atributos de uma relação.
 
 ## Constraints
 
@@ -53,16 +87,14 @@ As constraints podem ser divididas em três principais categorias:
 3. **Restrições Semânticas:** São restrições que não podem ser diretamente especificadas pelo esquema das relações.
     > *Ex:* Em uma relação “FUNCIONÁRIO” existe o atributo “função” que não pode receber todo tipo de valor, todavia, é impossível saber quais são esses valores apenas olhando o esquema das relações, ou seja, o nome da relação e o seu conjunto com o nome das tuplas. 
 
-### Restrições de Integridade relacional:
+## Restrições de Integridade relacional:
 
-- **Restrições de Domínio:** Essas são as restrições que especificam **[valores atômicos](#conceitos-auxiliares)** assim como os **tipos** dos valores de cada atributo.
+### **Restrições de Domínio** 
+Essas são as restrições que especificam **[valores atômicos](#conceitos-auxiliares)** assim como os **tipos** dos valores de cada atributo.
 
-- **Restrições de integridade de uma entidade:** Chaves primárias **não** podem assumir valores *Nulo*, uma vez que o objetivo de uma chave primária é justamente identificar unicamente a tupla.
+### **Restrições de integridade de uma entidade** 
+Chaves primárias **não** podem assumir valores *Nulo*, uma vez que o objetivo de uma chave primária é justamente identificar unicamente a tupla.
 
-- **Restrição de integridade da referência:** Interações entre relações acontecem por meio de **chaves estrangeiras**, dessa maneira, essa restrição define que uma tupla que referencia outra tupla precisa referenciar uma tupla **existente**. 
+### **Restrição de integridade da referência** 
+Interações entre relações acontecem por meio de **chaves estrangeiras**, dessa maneira, essa restrição define que uma tupla que referencia outra tupla precisa referenciar uma tupla **existente**. 
 
-## Base de dados relacional e seu esquema:
-- **Esquema de uma base de dados relacional:** O esquema de uma base de dados relacional é um conjunto de esquemas de relações S = {R1, R2...R3} e um outro conjunto de *restrições de integridade(RI)*, ou seja, um conjunto de normas que devem ser seguidas.
-
-- **Banco de dados relacional:** Um conjunto de relações, r de R, na qual cada ri está associada a uma Ri.
-    > :warning: **OBS:** Uma relação que não obedece as RI são chamadas  de relações **não válidas**, enquanto a relação que as obedece são chamadas de **válidas**.
