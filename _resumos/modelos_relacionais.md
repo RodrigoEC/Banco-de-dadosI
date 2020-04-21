@@ -7,20 +7,25 @@
     - [Atributo](#atributo)
     - [Esquema da relação](#esquema-da-relação)
     - [Chaves](#chaves)
+
 - [Conceitos Auxiliares](#conceitos-auxiliares)
     - [Domínio](#domínio)
     - [Valores Atômicos](#valores-atômicos)
     - [Mini-Mundo](#mini-mundo)
     - [Grau de uma relação](#grau)
+
 - [Constraints](#constraints)
     - [Restrições Implícitas](#restrições-implícitas)
     - [Restrições Explícitas](#restrições-explícitas)
     - [Restrições Semânticas](#restrições-semânticas)
+
 - [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
     - [Restrições de Domínio](#restrições-de-domínio)
     - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
     - [Restrição de integridade da referência](#restrição-de-integridade-da-referência)
 
+- [Banco de dados relacional](#Banco-de-dados-relacional)
+    - [Esquema de uma base de dados relacional](#Esquema-de-uma-base-de-dados-relacional)
 
 
 
@@ -111,3 +116,12 @@ Chaves primárias **não** podem assumir valores *Nulo*, uma vez que o objetivo 
 ### Restrição de integridade da referência
 Interações entre relações acontecem por meio de **chaves estrangeiras**, dessa maneira, essa restrição define que uma tupla que referencia outra tupla precisa referenciar uma tupla **existente**. 
 
+## Banco de dados relacional
+
+Um conjunto de relações, r de R, na qual cada ri está associada a uma Ri.
+
+> :warning: **OBS:** Uma relação que não obedece as RI são chamadas  de relações *não válidas*, enquanto a relação que as obedece são chamadas de *válidas*.
+
+### Esquema de uma base de dados relacional 
+
+O esquema de uma base de dados relacional é um conjunto de esquemas de relações S = {R1, R2...R3} e um outro conjunto de **[restrições de integridade](#restrições-de-integridade-relacional)**(RI), ou seja, um conjunto de normas que devem ser seguidas.
