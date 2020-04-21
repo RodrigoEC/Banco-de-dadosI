@@ -89,7 +89,7 @@ Onde:
 ---
 
 Relações de exemplo:
-![](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/UNION.png)
+![dwdwd](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/UNION.png)
 
 
 ### **UNION (⋃)**
