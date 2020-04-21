@@ -125,6 +125,7 @@ Um conjunto de relações, r de R, na qual cada ri está associada a uma Ri.
 ### Esquema de uma base de dados relacional 
 
 O esquema de uma base de dados relacional é um conjunto de esquemas de relações S = {R1, R2...R3} e um outro conjunto de **[restrições de integridade](#restrições-de-integridade-relacional)**(RI), ou seja, um conjunto de normas que devem ser seguidas.
-
-**Espero que você tenha entendido tudo que foi resumido, até o próximo resumo.**
-![](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/pocahontas_bye.gif)
+<p align="center">
+    <img src="https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/pocahontas_bye.gif">
+    <br><i>Espero que você tenha entendido tudo, até o próximo resumo!</i>
+</p>)
