@@ -13,9 +13,9 @@
     - [Mini-Mundo](#mini-mundo)
     - [Grau de uma relação](#grau)
 - [Constraints](#constraints)
-    - [Restrições Implícitas](#1.restrições-implícitas)
-    - [Restrições Explícitas](#2.restrições-explícitas)
-    - [Restrições Semânticas](#3.restrições-semânticas)
+    - [Restrições Implícitas](#1.Restrições-implícitas)
+    - [Restrições Explícitas](#2.Restrições-explícitas)
+    - [Restrições Semânticas](#3.Restrições-semânticas)
 - [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
     - [Restrições de Domínio](#restrições-de-domínio)
     - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
@@ -39,20 +39,20 @@ Exemplo de Relação:
 **Esquema:** Aluno(Nome, Matrícula, Idade, Curso)
 
 
-### **Tupla** 
-Lista *ordenada* de valores pertencentes a um domínio. Cada tupla representa uma entidade do **[mini-mundo](#conceitos-auxiliares)** que relação que ela está inserida aborda
+### Tupla 
+Lista *ordenada* de valores pertencentes a um domínio. Cada tupla representa uma entidade do **[mini-mundo](#mini-mundo)** que relação que ela está inserida aborda
 
-### **Relação** 
-Conjunto, não ordenado, de tuplas {t1, t2, ... , tn}. Cada relação possui um **[Grau](#conceitos-auxiliares)**.
+### Relação 
+Conjunto, não ordenado, de tuplas {t1, t2, ... , tn}. Cada relação possui um **[Grau](#grau)**.
 
-### **Atributo** 
-Uma coluna da tabela que representa uma característica das entidades existentes na relação. Cada atributo possui um **[domínio](#conceitos-auxiliares)** e apresenta apenas **[Valores Atômicos](#conceitos-auxiliares)**.
+### Atributo
+Uma coluna da tabela que representa uma característica das entidades existentes na relação. Cada atributo possui um **[domínio](#domínio)** e apresenta apenas **[Valores Atômicos](#valores-atômicos)**.
 
-### **Esquema da relação** 
+### Esquema da relação 
 O esquema R(a1,a2..ai) é formado pelo nome da relação (R) e pela lista de atributos.
     > *Ex:* Aluno (Nome, Matrícula, idade, curso)
 
-### **Chaves** 
+### Chaves 
 Chaves são atributos que tem a capacidade de identificar unicamente uma tupla. Chaves podem ser divididas em:
 
 - **Super Chaves:** Conjunto atributos que **juntos** funcionam como identificador único, mas sozinhos não (a não ser que o conjunto seja unitário, claro).
@@ -66,18 +66,18 @@ Chaves são atributos que tem a capacidade de identificar unicamente uma tupla. 
 
 ## Conceitos Auxiliares
 
-### **Domínio** 
+### Domínio
 Valores que cada *atributo* da relação pode receber, como *tipo* ou uma *seleção específica de valores*, a  partir das restrições que são determinadas.
 
-### **Valores atômicos** 
+### Valores atômicos
 Em uma relação os valores tem que ser únicos, atômicos.
 
 > *Ex:* Cliente(nome, cpf, telefone). O cliente não pode ter o atributo *telefone* com mais de 1 telefone cadastrado, para que isso seja possível é preciso criar outra relação **Telefone** com uma chave estrangeira que referencia o Cliente.
 
-### **Mini-Mundo** 
+### Mini-Mundo
 Parte do mundo real que a relação aborda
 
-### **Grau** 
+### Grau
 Número de atributos de uma relação.
 
 ## Constraints
@@ -102,12 +102,12 @@ São restrições que não podem ser diretamente especificadas pelo esquema das 
 
 ## Restrições de Integridade relacional:
 
-### **Restrições de Domínio** 
-Essas são as restrições que especificam **[valores atômicos](#conceitos-auxiliares)** assim como os **tipos** dos valores de cada atributo.
+### Restrições de Domínio 
+Essas são as restrições que especificam **[valores atômicos](#valores-atômicos)** assim como os **tipos** dos valores de cada atributo.
 
-### **Restrições de integridade de uma entidade** 
+### Restrições de integridade de uma entidade
 Chaves primárias **não** podem assumir valores *Nulo*, uma vez que o objetivo de uma chave primária é justamente identificar unicamente a tupla.
 
-### **Restrição de integridade da referência** 
+### Restrição de integridade da referência
 Interações entre relações acontecem por meio de **chaves estrangeiras**, dessa maneira, essa restrição define que uma tupla que referencia outra tupla precisa referenciar uma tupla **existente**. 
 
