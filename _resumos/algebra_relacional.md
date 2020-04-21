@@ -92,8 +92,21 @@ Onde:
 ## Teoria dos conjuntos
 ---
 
-Relações de exemplo:
-![dwdwd](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/UNION.png)
+As tabelas a seguir servirão como base para os exemplos dados:
+
+Estudante
+| Nome | id |
+| --- | --- |
+| José | 154 | 
+| Hui | 147 |
+| Virna | 187 |
+
+INSTRUTOR
+| Nome | id |
+| --- | --- |
+| José | 154 |
+| Paulo | 197 |
+| VIctor | 164 |
 
 
 ### **UNION (⋃)**
@@ -102,15 +115,44 @@ A operação de união junta as tuplas de uma relação R com as tuplas de uma r
 - **Comutatividade = TRUE:** R ⋃ S == S ⋃ R
 - **Associatividade = TRUE:** (R ⋃ S) ⋃ T ==  R ⋃ (S ⋃ T)
 
+**Ex:**
+
+ESTUDANTE ⋃ INSTRUTOR
+| Nome | id |
+| --- | --- |
+| Jośe | 154 |
+| Hui | 147 |
+| Virna | 187 |
+| Paulo | 197 |
+| Victor | 164 |
+
+
 ### **INTERSECTION (⋂)**
 A operação que cria uma nova relação que contém apenas as tuplas que pertencem tanto a uma relação R como a uma outra relação S, sendo denotada como `R ⋂ S`.
 
 - **Comutatividade = TRUE:** R ⋂ S == S ⋂ R
 - **Associatividade = TRUE:** (R ⋂ S) ⋂ T ==  R ⋂ (S ⋂ T)
 
+**Ex:**
+
+ESTUDANTE ⋂ INSTRUTOR
+| Nome | id |
+| --- | --- |
+| José | 154 |
+
+
 ### **SET DIFFERNCE ou MINUS**
-Operação `R - S` que produz como resultado todas as tuplas que estão em R mas não estão em S.
+Operação `R - S` que produz como resultado todas as tuplas que estão em R mas não estão em S. 
+
 - **Comutatividade = FALSE:** R - S != S - R
+
+**Ex:**
+
+ESTUDANTE - INSTRUTOR
+| Nome | id |
+| --- | --- |
+| Hui | 147 |
+| Virna | 187 |
 
 ### **CARTESINA (ou CROSS) PRODUCT(X)**
 Essa operação `R X S` produz uma nova relação Z formada pela combinação de todas as tuplas de R com as tuplas de S,resultando em na relação Z que possui:
@@ -124,13 +166,26 @@ Onde:
 - **Z:** Relação produzida a partir do produto cartesiano;
 - **R e S:** RElações participantes da operação.
 
-
-
 **n° tuplas:** n° tuplas de R * n° tuplas de S;
 
 **Ordem:** n° atributos de R + n° atributos de S.
 
 > :warning: **OBS:** O produto cartesiano por si só *não* traz conhecimento **real** por si só, sendo necessária à utilização do SELECT, por exemplo, para filtrar os dados que podem ter algum significado.
+
+**Ex:**
+
+ESTUDANTE X INSTRUTOR
+| Nome | id | Nome | id |
+| --- | --- | --- | --- |
+| José | 154 | José | 154 |
+| José | 154 | Paulo | 197 |
+| José | 154 | VIctor | 164 |
+| Hui | 147 | José | 154 |
+| Hui | 147 | Paulo | 197 |
+| Hui | 147 | VIctor | 164 |
+| Virna | 187 | José | 154 |
+| Virna | 187 | Paulo | 197 |
+| Virna | 187 | VIctor | 164 |
 
 ---
 ## Operações Relacionais Binárias
