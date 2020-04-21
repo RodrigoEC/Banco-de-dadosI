@@ -17,6 +17,7 @@
     - [EQUIJOIN](#EQUIJOIN)
     - [NATURAL JOIN](#NATURAL-JOIN)
     - [DIVISION](#DIVISION)
+- [Árvores de Consulta](#árvores-de-consulta)
 
 ## Introdução
 ---
@@ -285,3 +286,23 @@ FUNCIONÁRIO ÷ PROJETOS
 | Nome | SSN |
 | --- | --- |
 | Regis | 1234 |
+
+
+## Árvores de Consulta
+
+Árvores de consulta(Query trees) são estruturas de dados na forma de árvores que representam uma expressão algébrica organizada da seguinte forma:
+
+- **Folhas:** Relações que serão utilizadas pelas operações relacionais;
+- **Nós internos:** São as operações que serão realizadas.
+
+O Processo acontece da seguinte maneira:
+1. As operações acontecem a partir das folhas de menor nível, as quais serão utilizadas na operação que o `nó pai` represente.
+
+2. o nó interno que fez a operação a partir da(s) relação(ões) do(s) seu(s) nó(s) filho(s) se transforma na relaçao resultante, a qual será utilizada pelo seu `nó pai`.
+
+3. O processo só acaba quando chega no `nó raiz`, que faz a operação que lhe pertence e retorna um resultado.
+
+
+Exemplo de uma árvore de consulta(Query Tree):
+![](https://github.com/RodrigoEC/BancoDeDadosI/tree/master/_imagens/arvore_de_consulta.png)
+
