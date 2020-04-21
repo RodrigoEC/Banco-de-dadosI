@@ -7,23 +7,19 @@
     - [Atributo](#atributo)
     - [Esquema da relação](#esquema-da-relação)
     - [Chaves](#chaves)
-
 - [Conceitos Auxiliares](#conceitos-auxiliares)
     - [Domínio](#domínio)
     - [Valores Atômicos](#valores-atômicos)
     - [Mini-Mundo](#mini-mundo)
     - [Grau de uma relação](#grau)
-
 - [Constraints](#constraints)
     - [Restrições Implícitas](#restrições-implícitas)
     - [Restrições Explícitas](#restrições-explícitas)
     - [Restrições Semânticas](#restrições-semânticas)
-
 - [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
     - [Restrições de Domínio](#restrições-de-domínio)
     - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
     - [Restrição de integridade da referência](#restrição-de-integridade-da-referência)
-
 - [Banco de dados relacional](#Banco-de-dados-relacional)
     - [Esquema de uma base de dados relacional](#Esquema-de-uma-base-de-dados-relacional)
 
@@ -128,5 +124,4 @@ O esquema de uma base de dados relacional é um conjunto de esquemas de relaçõ
 <p align="center">
      <br><i>Espero que você tenha entendido tudo, até o próximo resumo!</i>
     <img src="https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/pocahontas_bye.gif">
-   
 </p>
