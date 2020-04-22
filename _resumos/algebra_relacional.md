@@ -1,4 +1,5 @@
 # Álgebra Relacional
+*Capítulo 08 - Fundamentals of DataBase Systems 7th edition.*
 
 ## Índice
 - [Introdução](#introdução)
@@ -18,6 +19,8 @@
     - [NATURAL JOIN](#NATURAL-JOIN)
     - [DIVISION](#DIVISION)
 - [Árvores de Consulta](#árvores-de-consulta)
+- [Operações relacionais adicionais](#operações-relacionais-adicionais)
+    - [Projeção Generalizada](#Projeção-Generalizada)
 
 ## Introdução
 ---
@@ -69,7 +72,7 @@ Operação que seleciona um subconjunto de tuplas (linhas) de uma relação (tab
 A operação *SELECT* se organiza da seguinte maneira:
 
 ```
-    σ <condição de seleção> ( R )
+σ <condição de seleção> ( R )
 ```
 
 Onde:
@@ -89,7 +92,7 @@ Operação que filtra os **atributos**(coluna) de um relação. Essa operação 
 A operação de seleção é organizada da seguinte maneira:
 
 ```
-    π <atributos > ( R )
+π <atributos > ( R )
 ```
 
 Onde:
@@ -110,7 +113,7 @@ Operação que renomeia os atributos de uma relação.
 Essa operação é representada da seguinte maneira:
 
 ```
-    ρ relação(lista de atributos) (R)
+ρ relação(lista de atributos) (R)
 ```
 
 Onde:
@@ -191,7 +194,7 @@ Essa operação `R X S` produz uma nova relação Z formada pela combinação de
 Essa operação é representada da seguinte forma:
 
 ```
-    Z <- R X S
+Z <- R X S
 ```
 
 Onde:
@@ -231,7 +234,7 @@ Essa operação engloba as operações de [produto cartesiano](#CARTESINA-(ou-CR
 Essa operação é representada da seguinte maneira:
 
 ```
-    DEPARTMENT ⋈ Mgr_ssn = Ssn EMPLOYEE
+DEPARTMENT ⋈ Mgr_ssn = Ssn EMPLOYEE
 ```
 
 Onde:
@@ -252,14 +255,14 @@ Operação criada para excluir a segunda coluna repetida do [EQUIJOIN](#equijoin
 Essa operação se organiza da seguinte maneira:
 
 ```
-    NOVA_REL <- R * <condição1 AND condição2> S
+NOVA_REL <- R * <condição1 AND condição2> S
 ```
 
 Onde:
 - **NOVA_REL:** Relação resultante;
 - **R e S:** Relações sobre as quais a operação será realzada;
 - *: Símblo da operação natural join;
-- <**condição1 AND condição2**>: Condições que ditarão como será feita a seleção das tuplas., chamado de `THETA_JOIN`.
+- <**condição1 AND condição2**>: Condições que ditarão como será feita a seleção das tuplas     , chamado de `THETA_JOIN`.
 
 > :warning: **OBS:** Para que essa operação funcione é necessário que o nome dos atributos que vão ser comparados sejam iguais.
 
@@ -287,9 +290,9 @@ FUNCIONÁRIO ÷ PROJETOS
 | --- | --- |
 | Regis | 1234 |
 
-
+---
 ## Árvores de Consulta
-
+---
 Árvores de consulta(Query trees) são estruturas de dados na forma de árvores que representam uma expressão algébrica relacional. A estrutura da árvore é organizada da seguinte forma:
 
 - **Folhas:** Relações que serão utilizadas pelas operações;
@@ -299,7 +302,7 @@ O Processo acontece da seguinte maneira:
 
 1. As operações acontecem a partir das folhas de menor nível, as quais serão utilizadas na operação que do seu `nó pai`.
 
-2. o nó interno que fez a operação a partir das relações/relação dos seus nós filhos se transforma na relação resultante da sua operação, e essa será utilizada pelo seu `nó pai`.
+2. O nó interno que fez a operação a partir das relações dos seus nós filhos se transforma na relação resultante da sua operação, e essa será utilizada pelo seu `nó pai`.
 
 3. O processo se repete e só acaba quando chega no `nó raiz`, que faz a operação que lhe pertence e retorna a relação resultado.
 
@@ -307,3 +310,45 @@ O Processo acontece da seguinte maneira:
 Exemplo de uma árvore de consulta(Query Tree):
 ![Query Tree](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/arvore_de_consulta.png)
 
+---
+## Operações relacionais adicionais
+---
+São operações que realizam tarefas que as operações *originais* não conseguem resolver para a SGBDR (Sistema de gerenciamento de banco de dados Relacional)
+
+### **Projeção Generalizada**
+A projeção generalizada  é uma operação que estende a operação [PROJECT](#PROJECT), permitindo que funções sejam inclusas na lista de atributos que serão "filtrados".
+
+Essa operação é estruturada da seguinte forma:
+
+```
+π <f1, f2, ..., fn> (R)
+```
+
+Onde:
+- **π:** Símbolo da operação PROJECT;
+- **f1, f2, ..., fn:** Funções sobre os atributos da relação, podendo ser operações aritméticas ou valores constantes;
+- **(R:)** Relação sobre a qual a operação será realizada.
+
+> :warning: **Atenção:** O nome dos atributos criados a partir das funções pode ficar sem sentido, por isso normalmente se utiliza a operação de [Rename](#rename) para complementar essa operação.
+
+**Ex:**
+
+REPORT <- ρ( Ssn, Net_salary, Bonus, Tax ) (π Ssn, Salary – Deduction , 2000 * Years_service , 0.25 * Salary ( EMPLOYEE ))
+
+### **Operação de Funções de agregação e agrupamento**
+
+A utilização de [`Funções de agregação`](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463) é uma necessidade frequente na manipulação de bases de dados, pois essas funções são utilizadas para sumarizar informações a parir de um conjunto de tuplas da base de dados. Allém disso, o `agrupamento` de tuplas a partir dos valores de atributos especificados é outra necessidade.
+
+Para isso, existe a operação de funções de agregação, que se estrutura da seguinte maneira:
+
+```
+<`grouping attributes`> I <function list> (R)
+```
+
+Onde:
+- <**grouping attributes**>: Atributos que servirão para fazer o agrupamento;
+- **I:** Símbolo da operação de Funçoẽs de agregação;
+- <**function list**>: Lista de tuplas (<`função`><`atributo`>), onde `função` é uma das funções permitidas (como SUM, AVERAGE, MAXIMUM, MINIMUM, COUNT) e `Atributo` é o atributo sobre o qual a função vai ser operada;
+- **(R):** Relação sobre a qual ocorrerá a operação.
+
+> :warning: **OBS:** Caso a operação SELECT não seja utilizada em seguida, os nomes dos atributos criados na nova relação será uma concatenação `função_atributo`.
