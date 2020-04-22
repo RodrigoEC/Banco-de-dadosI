@@ -335,11 +335,10 @@ Onde:
 
 REPORT <- ρ( Ssn, Net_salary, Bonus, Tax ) (π Ssn, Salary – Deduction , 2000 * Years_service , 0.25 * Salary ( EMPLOYEE ))
 
-### **Operação de Funções de agregação e agrupamento**
+### **Operação de funções de agregação e Agrupamento**
+A operação de funções de agregação é uma operação que permite a utilização de [`Funções de agregação`](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), funções essas que servem para sumarizar informações a partir de um conjunto de tuplas da base de dados, assim como permite o `agrupamento` de tuplas a partir dos valores de atributos especificados é outra necessidade.
 
-A utilização de [`Funções de agregação`](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463) é uma necessidade frequente na manipulação de bases de dados, pois essas funções são utilizadas para sumarizar informações a parir de um conjunto de tuplas da base de dados. Allém disso, o `agrupamento` de tuplas a partir dos valores de atributos especificados é outra necessidade.
-
-Para isso, existe a operação de funções de agregação, que se estrutura da seguinte maneira:
+Essa operação se estrutura da seguinte maneira:
 
 ```
 <`grouping attributes`> I <function list> (R)
