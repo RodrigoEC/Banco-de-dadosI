@@ -296,6 +296,7 @@ FUNCIONÁRIO ÷ PROJETOS
 - **Nós internos:** São as operações que serão realizadas.
 
 O Processo acontece da seguinte maneira:
+
 1. As operações acontecem a partir das folhas de menor nível, as quais serão utilizadas na operação que o `nó pai` represente.
 
 2. o nó interno que fez a operação a partir da(s) relação(ões) do(s) seu(s) nó(s) filho(s) se transforma na relaçao resultante, a qual será utilizada pelo seu `nó pai`.
@@ -304,5 +305,5 @@ O Processo acontece da seguinte maneira:
 
 
 Exemplo de uma árvore de consulta(Query Tree):
-![](https://github.com/RodrigoEC/BancoDeDadosI/tree/master/_imagens/arvore_de_consulta.png)
+![wdw](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/arvore_de_consulta.png)
 
