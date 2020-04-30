@@ -1,6 +1,7 @@
 # Álgebra Relacional
 *Capítulo 08 - Fundamentals of DataBase Systems 7th edition.*
 
+
 ## Índice
 - [Introdução](#introdução)
 - [Expressões in-line e relações intermediárias](#Expressões-in-line-e-relações-intermediárias)
@@ -21,7 +22,11 @@
 - [Árvores de Consulta](#árvores-de-consulta)
 - [Operações relacionais adicionais](#operações-relacionais-adicionais)
     - [Projeção Generalizada](#Projeção-Generalizada)
+    - [Fechamento Recursivo](#fechamento-recursivo)
+    - [OUTER JOIN](#outer-join)
+    - [OUTER UNION](#outer-union)
 
+---
 ## Introdução
 ---
 A álgebra relacional é um conjunto de operações que vão envolver as relações de um modelo relacional com o objetivo de manipular as informações de um banco de dados.
@@ -42,8 +47,9 @@ As operações da álgebra relacional podem ser divididas em dois principais gru
     - [JOIN](#RENAME).
 
 
-
+---
 ## Expressões in-line e relações intermediárias
+---
 
 Todas as operações previamente citadas podem ser escritas como uma única **expressão algébrica relacional(expressões in-line)** ou podem ser escritas com o auxílio de **relações intermediárias**.
 
@@ -65,6 +71,7 @@ Todas as operações previamente citadas podem ser escritas como uma única **ex
 ---
 Operações unárias são as operações que envolvem apenas *uma* relação.
 
+---
 ### **SELECT**
 
 Operação que seleciona um subconjunto de tuplas (linhas) de uma relação (tabela) a partir de uma ou mais **condição de seleção**.
@@ -83,8 +90,7 @@ Onde:
 
 **Comutatividade:** A ordem das condições de seleção não aletra o resultado da operação.
 
-
-
+---
 ### **PROJECT**
 
 Operação que filtra os **atributos**(coluna) de um relação. Essa operação é denominada `divisora vertical` uma vez que divide a relação em duas novas relações, uma que contém as colunas descartadas e a outra com as colunas necessárias
@@ -105,6 +111,7 @@ Onde:
 
 > :warning: **OBS:** A π pode produzir tuplas iguais, caso as chaves sejam descartadas. A álgebra relacional exclui tuplas repetidas, todavia o SQL não.
 
+---
 ### **RENAME**
 Operação que renomeia os atributos de uma relação. 
 
@@ -142,7 +149,7 @@ INSTRUTOR
 | Paulo | 197 |
 | VIctor | 164 |
 
-
+---
 ### **UNION**
 A operação de união junta as tuplas de uma relação R com as tuplas de uma relação S e cria uma nova relação `R ⋃ S`, onde não há tuplas duplicadas. Essa operação só ocorre caso as relações apresentarem os mesmo tipo e [domínio](https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_resumos/modelos_relacionais.md#dom%C3%ADnio).
 
@@ -160,7 +167,7 @@ ESTUDANTE ⋃ INSTRUTOR
 | Paulo | 197 |
 | Victor | 164 |
 
-
+---
 ### **INTERSECTION**
 A operação que cria uma nova relação que contém apenas as tuplas que pertencem tanto a uma relação R como a uma outra relação S, sendo denotada como `R ⋂ S`.
 
@@ -174,7 +181,7 @@ ESTUDANTE ⋂ INSTRUTOR
 | --- | --- |
 | José | 154 |
 
-
+---
 ### **SET DIFFERENCE ou MINUS**
 Operação `R - S` que produz como resultado todas as tuplas que estão em R mas não estão em S. 
 
@@ -188,6 +195,7 @@ ESTUDANTE - INSTRUTOR
 | Hui | 147 |
 | Virna | 187 |
 
+---
 ### **CARTESIAN (ou CROSS) PRODUCT**
 Essa operação `R X S` produz uma nova relação Z formada pela combinação de todas as tuplas de R com as tuplas de S, resultando em na relação Z que possui:
 
@@ -228,6 +236,7 @@ ESTUDANTE X INSTRUTOR
 ---
 São operações que envolvem a manipulação de *duas* relações.
 
+---
 ### **JOIN**
 Essa operação engloba as operações de [produto cartesiano](#CARTESINA-(ou-CROSS)-PRODUCT(X)) seguida pela operação de [select](#SELECT-(σ)), devido ao fato de dessa sequência de operações ser muito utilizada.
 
@@ -246,9 +255,11 @@ Onde:
 
 - **Ordem:** n° atributos de R + n° atributos atributos de S.
 
+---
 ### **EQUIJOIN**
 Variação do [JOIN](#JOIN-(⋈)), onde o operador de condição utilizado é o `=`. Como o operador utilizado é o =, a relação resultante apresentará 2 colunas de atributos com os mesmos valores.
 
+---
 ### **NATURAL JOIN**
 Operação criada para excluir a segunda coluna repetida do [EQUIJOIN](#equijoin).
 
@@ -266,6 +277,7 @@ Onde:
 
 > :warning: **OBS:** Para que essa operação funcione é necessário que o nome dos atributos que vão ser comparados sejam iguais.
 
+---
 ### DIVISION
 A operação R ÷ S funciona da seguinte maneira. sendo o conjunto de atributos de S um subconjunto dos atributos de R, R ÷ S pega todos os valores das tuplas de R que se conseguem abranger  TODAS as tuplas de S e cria uma nova relação a partir disso.
 
@@ -315,6 +327,7 @@ Exemplo de uma árvore de consulta(Query Tree):
 ---
 São operações que realizam tarefas que as operações *originais* não conseguem resolver para a SGBDR (Sistema de gerenciamento de banco de dados Relacional)
 
+---
 ### **Projeção Generalizada**
 A projeção generalizada  é uma operação que estende a operação [PROJECT](#PROJECT), permitindo que funções sejam inclusas na lista de atributos que serão "filtrados".
 
@@ -335,6 +348,7 @@ Onde:
 
 REPORT <- ρ( Ssn, Net_salary, Bonus, Tax ) (π Ssn, Salary – Deduction , 2000 * Years_service , 0.25 * Salary ( EMPLOYEE ))
 
+---
 ### **Operação de funções de agregação e Agrupamento**
 A operação de funções de agregação é uma operação que permite a utilização de [`Funções de agregação`](https://www.devmedia.com.br/sql-funcoes-de-agregacao/38463), funções essas que servem para sumarizar informações a partir de um conjunto de tuplas da base de dados, assim como permite o `agrupamento` de tuplas a partir dos valores de atributos especificados é outra necessidade.
 
@@ -351,3 +365,97 @@ Onde:
 - **(R):** Relação sobre a qual ocorrerá a operação.
 
 > :warning: **OBS:** Caso a operação SELECT não seja utilizada em seguida, os nomes dos atributos criados na nova relação será uma concatenação `função_atributo`.
+
+---
+### **Fechamento Recursivo**
+
+O fechamento recursivo é uma operação em que existe um **relacionamento recursivo** entre as tuplas de um mesmo tipo. 
+
+> :warning: **OBS:** Essa operação não é possível de ser implementada com operações básicas da álgebra realacional, todavia, é implementada na linguagem [`SQL`(colocar o link para o resumo de SQL)]().
+
+**Ex:**  
+
+Caso seja requisitado os ids de todos os funcionários que estejam sendo supervisionados pelo funcionário X, ou por aqueles que ele supervisiona. Será necessário acessar os supervisionados do X, depois os supervisionados dos supervisionados de X e assim em diante.
+
+---
+### **OUTER JOiN**
+
+A operação `outer join` possui o mesmo princípio de um [`join`](#join) comum, todavia, ao fazer o "matching" das duas relações ela não descarta as tuplas que não possuem par, ao invés disso, associa essas tuplas a valores *NULL*.
+
+Representação:
+
+```
+DEPARTMENT ⋈ Mgr_ssn = Ssn EMPLOYEE
+```
+
+> obs: O símbolo acima possui perninhas dependendo do tipo, mas não achei do tamanho correto
+
+O outer join pode ser dividido em 3 variasções:
+
+- **LEFT OUTER JOIN:** As tuplas da relação à esquerda que não possuem par são associados a valores *NULL*, enquanto as tuplas que não possuem par na relação a direito são descartadas;
+
+- **RIGHT OUTER JOIN:** Mesma ideia do `left outer join`, porém, nesse caso as tuplas da relação à direita que não possuem par são associados a valores *NULL*, enquanto as tuplas que não possuem par na relação a esquerda são descartadas; 
+
+- **FULL OUTER JOIN** Tanto as tuplas da relação a direita, quanto as tuplas da relação a esquerda que não possuirem um par quando for realizada a operação de `join` são associados a valores *NULL*.
+
+**Ex:**
+
+EMPREGADO
+| nome | id_dept |
+| --- | --- |
+| Josenildo | 1 |
+| Joselanda | 2 |
+| Joana | 1 |
+| Jefferson | 4 |
+
+DEPARTAMENTO
+| id | nome_dep |
+| --- | --- |
+| 1 | Administração |
+| 2 | Financeiro |
+| 3 | Marketing |
+
+**LEFT OUTER JOIN:** REL <- π nome, id_dept, nome_dep (EMPREGADO ⋈ id_dept = id DEPARTAMENTO)
+
+REL
+| nome | id_dept | nome_dep |
+| --- | --- | --- |
+| Josenildo | 1 | Administração |
+| Joselanda | 2 | Financeiro |
+| Joana | 1 | Administração |
+| Jefferson | 4 | NULL |
+
+**RIGHT OUTER JOIN:** REL <- π nome, id, nome_dep (EMPREGADO ⋈ id_dept = id DEPARTAMENTO)
+
+REL
+| nome | id | nome_dep |
+| --- | --- | --- |
+| Josenildo | 1 | Administração |
+| Joselanda | 2 | Financeiro |
+| Joana | 1 | Administração | 
+| NULL | 3 | marketing |
+
+**FULL OUTER JOIN:** REL <- π nome, id, nome_dep (EMPREGADO ⋈ id_dept = id DEPARTAMENTO)
+
+REL
+| nome | id | nome_dep |
+| --- | --- | --- |
+| Josenildo | 1 | Administração |
+| Joselanda | 2 | Financeiro |
+| Joana | 1 | Administração | 
+| NULL | 3 | marketing |
+| Jefferson | 4 | NULL |
+
+---
+### **OUTER UNION**
+
+Essa operação é a mesma do `FULL OUTER JOIN`. Sendo:
+
+- R(nome, id, dep)
+- S(id_dept, nome_dept)
+
+REL <- R ⋃* <dep = id_dept> S gera a seguinte relação:
+
+> REL(nome, id, dep, nome_dept)
+
+Onde, assim como no [`FULL OUTER JOIN`](#outer-join), as tuplas que não tinham par são associadas a valores *NULL*.
