@@ -1,5 +1,5 @@
 # Álgebra Relacional
-*Capítulo 08 - Fundamentals of DataBase Systems 7th edition.*
+*Seção 8.5 - Fundamentals of DataBase Systems 7th edition.*
 
 
 ## Índice
@@ -19,7 +19,7 @@
     - [EQUIJOIN](#EQUIJOIN)
     - [NATURAL JOIN](#NATURAL-JOIN)
     - [DIVISION](#DIVISION)
-- [Árvores de Consulta](#árvores-de-consulta)
+- [Árvores de Consulta](#árvores-de-consulta)   
 - [Operações relacionais adicionais](#operações-relacionais-adicionais)
     - [Projeção Generalizada](#Projeção-Generalizada)
     - [Fechamento Recursivo](#fechamento-recursivo)
