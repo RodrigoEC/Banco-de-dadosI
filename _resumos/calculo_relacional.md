@@ -67,4 +67,18 @@ A condição (Cond(T)) pode ser de três tipos:
 ---
 ### **Quantificadores Universais e existenciais**
 Existem dois tipos de quantificadores: 
-- ∀
+
+- **Quantificador universal (∀t):** Em uma fórmula F, (∀t)(F) significa que a fórmula precisa ser verdade para **TODAS** as tuplas para que ela seja avaliada como *TRUE*, caso exista pelo menos uma tupla que não se encaixe ela é avaliada como *FALSE*.
+
+- **Quantificador existencial(∃t):** Em uma fórmula F, (∃t)(F) é avaliado como *TRUE* caso existe pelo menos uma tupla que satisfaça a fórmula, caso contrário, ela é avaliada como *FALSE*.
+
+Por causa dos quantificadores nós podemos classificar as variáveis em dois subgrupos:
+
+- **Variáveis livres:** São variáveis que não estão atreladas a nenhum quantificador;
+- **Variáveis ligadas:** São as variáveis que são atreladas a um quantificador
+
+    **Ex:** Nome de todos os professores que lecionam pelo menos uam disciplina
+    ```
+        {t.name | PROFESSOR(t) AND (∃w)(DISCIPLINA(w) AND t.disciplina = w.professor)}
+    ```
+    Onde: t é uma variável `livre` e w é uma variável `ligada`.
