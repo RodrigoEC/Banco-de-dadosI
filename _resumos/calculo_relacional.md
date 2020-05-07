@@ -6,7 +6,7 @@
 - [Cálculo Relacional de Tuplas](#cálculo-relacional-de-tuplas)
     - [Expressões e fórmulas](#Expressões-e-fórmulas)
     - [Quantificadores Universais e existenciais](#quantificadores-universais-e-existenciais)
-
+- [Cálculo Relacional de domínio](#Cálculo-relacional-de-domínio)
 ---
 ## Introdução
 
@@ -40,8 +40,6 @@ Onde:
 - `T1, T2 e Tn` são a variável(tupla);
 - `A1, A2 e An` são os atributos de T1 e T2, respectivamente, que serão retornados como resposta
 - `Cond(T)` é a condição envolvendo T que será julgada como verdadeira ou falsa.
-
-
 
 A condição (Cond(T)) pode ser de três tipos:
 
@@ -82,3 +80,39 @@ Por causa dos quantificadores nós podemos classificar as variáveis em dois sub
         {t.name | PROFESSOR(t) AND (∃w)(DISCIPLINA(w) AND t.disciplina = w.professor)}
     ```
     Onde: t é uma variável `livre` e w é uma variável `ligada`.
+
+---
+## Cálculo relacional de domínio
+A diferença principal desse cálculo relacional para o de tuplas é o tipo de variável. No cálculo relacional de domínio as variáveis, agora chamadas de `variáveis de domínio`, são os `atributos`.
+
+As fórmulas do Cálculo relacional de domínio se estruturam da seguinte forma:
+```
+    {x1, x2, ... , xn | Cond(x1, x2, ..., xn, xn+1, xn+2, xn+m )}
+```
+Onde:
+- **x1...xn+m:** São os variáveis de domínio;
+- **Cond:** Condição que envolvem os atributos e que serão avaliadas como *TRUE* ou *FALSE*.
+
+Assim como no cálculo relacional de tuplas, a *Cond* pode ser de 3 tipos:
+
+- **R(x1, x2, ..., xj):** Sendo R o nome da relação de grau j e (x1, x2, ... , xj) `todos` os atributos de R. Essa condição implica que cada uma dessas variáveis de domínio representa algum dos atributos da relação R.
+
+    **Ex:** Retornar o nome e id de todas as pessoas que pertencem a relação EMPLOYEE.
+    ```
+        {v, u | EMPLOYEE(vumnop)}
+    ```
+
+- **x1 oc x2:** Sendo oc um `operador de comparação`, essa condição compara duas variáveis de domínio(atributos).
+
+    **Ex:** Retornar nome e id de todos os empregados que ganham mais de 50000 reais.
+    ```
+        {v, u | EMPLOYEE(vumnop) AND p > 50000}
+    ```
+
+- **x1 oc k *OR* k oc x2:** Sendo oc um `operador de comparação` e k uma `constante` qualquer, essa condição compara duas variáveis de domínio com uma constante.
+
+    **Ex:** Retornar o nome e id de todos os funcionários que ganham mais de 4000 reais ou menos de 1000 reais.
+    ```
+        {v, u | EMPLOYEE(vumnop) AND (p > 4000 OR p < 1000)}
+    ```
+
