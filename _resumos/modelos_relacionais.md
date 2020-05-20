@@ -19,7 +19,7 @@
 - [Restrições de Integridade relacional](#restrições-de-integridade-relacional)
     - [Restrições de Domínio](#restrições-de-domínio)
     - [Restrições de integridade de uma entidade](#restrições-de-integridade-de-uma-entidade)
-    - [Restrição de integridade da referência](#restrição-de-integridade-da-referência)
+    - [Restrição de integridade referencial](#restrição-de-integridade-da-referência)
 - [Banco de dados relacional](#Banco-de-dados-relacional)
     - [Esquema de uma base de dados relacional](#Esquema-de-uma-base-de-dados-relacional)
 
@@ -109,7 +109,7 @@ Essas são as restrições que especificam **[valores atômicos](#valores-atômi
 ### Restrições de integridade de uma entidade
 Chaves primárias **não** podem assumir valores *Nulo*, uma vez que o objetivo de uma chave primária é justamente identificar unicamente a tupla.
 
-### Restrição de integridade da referência
+### Restrição de integridade referencial
 Interações entre relações acontecem por meio de **chaves estrangeiras**, dessa maneira, essa restrição define que uma tupla que referencia outra tupla precisa referenciar uma tupla **existente**. 
 
 ## Banco de dados relacional
