@@ -197,7 +197,7 @@ ESTUDANTE - INSTRUTOR
 
 ---
 ### **CARTESIAN (ou CROSS) PRODUCT**
-Essa operação `R X S` produz uma nova relação Z formada pela combinação de todas as tuplas de R com as tuplas de S, resultando em na relação Z que possui:
+Essa operação `R X S` produz uma nova relação Z formada pela combinação de todas as tuplas de R com as tuplas de S, resultando na relação Z que possui a quantidade de colunas de R somada a quantidade de colunas de S.
 
 Essa operação é representada da seguinte forma:
 
@@ -328,7 +328,7 @@ Exemplo de uma árvore de consulta(Query Tree):
 São operações que realizam tarefas que as operações *originais* não conseguem resolver para a SGBDR (Sistema de gerenciamento de banco de dados Relacional)
 
 ---
-### **Projeção Generalizada**
+### **Operações de projeção generalizada**
 A projeção generalizada  é uma operação que estende a operação [PROJECT](#PROJECT), permitindo que funções sejam inclusas na lista de atributos que serão "filtrados".
 
 Essa operação é estruturada da seguinte forma:
