@@ -1,4 +1,4 @@
-:computer: # BancoDeDadosI
+# :computer: BancoDeDadosI
 
 Esse repositório existe para que eu possa disponibilizar o conhecimento que eu consegui durante as aulas de banco de dados I na Universidade Federal de Campina Grande (UFCG), juntamente com o material disponibilizado pelo professor. 
 
