@@ -126,5 +126,5 @@ O esquema de uma base de dados relacional é um conjunto de esquemas de relaçõ
 
 <p align="center">
      <br><i>Espero que você tenha entendido tudo, até o próximo resumo!</i>
-    <img src="https://github.com/RodrigoEC/BancoDeDadosI/blob/master/_imagens/pocahontas_bye.gif">
+    <img src="../imagens/pocahontas_bye.gif">
 </p>
