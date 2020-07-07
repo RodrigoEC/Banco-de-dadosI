@@ -1,4 +1,4 @@
-# :computer: BancoDeDadosI
+# :computer: Banco de dados I
 
 ## Introdução 
 
