@@ -1,69 +1,65 @@
--- Questão 01 e 02
-
+-- Questão 01 e 02: Definição das tabelas
 CREATE TABLE automovel (
-    renavan CHAR(17),
+    renavan CHAR(17), -- PK da tabela
     placa CHAR(7),
     modelo VARCHAR(20),
-    ano_fabricacao INTEGER,
-    chassi CHAR(17)
+    ano_fabricacao INTEGER
 );
 
--- O atributo renava_automovel existe para criar uma relação entre o segurado e o seu automóvel
 CREATE TABLE segurado (
     nome TEXT,
-    cpf CHAR(11),
-    renavan_automovel CHAR(7)
+    cpf CHAR(11), -- PK da tabela
+    renavan_automovel CHAR(17) -- Futura FK
 );
 
--- Acredito que para identificar unicamente uma oficina em específico seria necessária a junção
--- do cnpj com o cep daquela oficina em específico, caso exista uma filial dessa marca de oficina.
 CREATE TABLE oficina (
-    cnpj CHAR(14),
     nome VARCHAR(20),
-    cep CHAR(8)
+    cnpj CHAR(14), -- PK da tabela
+    cep CHAR(8) -- Futura PK
+    
 );
 
-CREATE TABLE PERITO (
-    nome TEXT, 
-    cpf CHAR(11)
+CREATE TABLE perito (
+    nome TEXT,
+    cpf CHAR(11) -- PK da tabela
 );
 
--- O seguro é aquele que reune bastante informação das outras tabelas, por isso julguei essencial a 
--- existência diversos atributos que façam relação com outros atributos de outras tabelas (SK).
 CREATE TABLE seguro (
-    protocolo INTEGER,
-    cpf_segurado CHAR(11),
-    cpf_perito CHAR(11),
-    renavan_automovel CHAR(7),
-    mensalidade INTEGER,
+    protocolo INTEGER, -- PK da tabela
+    cpf_segurado CHAR(11), -- Futura FK (segurado)
+    cpf_perito CHAR(11), -- Futura FK (perito)
+    renavan_automovel CHAR(7), -- Futura FK (automovel)
+    mensalidade NUMERIC,
     data_ativacao DATE
 );
 
 CREATE TABLE sinistro (
-    id_ocorrencia INTEGER, 
+    id_ocorrencia INTEGER, -- PK tabela
     data_ocorrencia TIMESTAMP,
-    seguro_protocolo INTEGER,
+    seguro_protocolo INTEGER, -- Futura FK (seguro)
     ocorrencia TEXT
 );
 
 CREATE TABLE pericia (
-    id_pericia INTEGER, 
-    id_sinistro INTEGER,
-    analise_perito TEXT,
-    perda_total BOOLEAN
+    id_pericia INTEGER, -- PK da tabela
+    id_sinistro INTEGER, -- Futura FK (sinistro)
+    perda_total BOOLEAN,
+    analise_perito TEXT
 );
+
 
 CREATE TABLE reparo (
-    id_reparo INTEGER,
-    cnpj_oficina CHAR(14),
-    id_pericia INTEGER,
-    valor_reparo INTEGER
+    id_reparo INTEGER, -- Futura PK
+    cnpj_oficina CHAR(14), -- Futura FK (oficina)
+    cep_oficina CHAR(8), -- Futura FK (oficina)
+    id_pericia INTEGER, -- FUtura FK (pericia)
+    Valor_reparo NUMERIC
+
 );
 
--- Questões 03
-
+-- Questão 03: Adiciona Primary Keys
 ALTER TABLE automovel ADD CONSTRAINT automovel_pkey PRIMARY KEY (renavan);
-ALTER TABLE segurado ADD CONSTRAINT segurado_pkey PRIMARY KEY (cpf);
+ALTER TABLE segurado ADD CONSTRAINT segurado_pkey PRIMARY KEY (cpf)
 ALTER TABLE oficina ADD CONSTRAINT oficina_pkey PRIMARY KEY (cnpj, cep);
 ALTER TABLE perito ADD CONSTRAINT perito_pkey PRIMARY KEY (cpf);
 ALTER TABLE seguro ADD CONSTRAINT seguro_pkey PRIMARY KEY (protocolo);
@@ -71,7 +67,7 @@ ALTER TABLE sinistro ADD CONSTRAINT sinistro_pkey PRIMARY KEY (id_ocorrencia);
 ALTER TABLE pericia ADD CONSTRAINT pericia_pkey PRIMARY KEY (id_pericia);
 ALTER TABLE reparo ADD CONSTRAINT reparo_pkey PRIMARY KEY (id_reparo);
 
--- Questão 04
+-- Questão 04: Constraints e Foraign Keys
 
 -- Fkeys do segurado
 ALTER TABLE segurado ADD CONSTRAINT segurado_fkey FOREIGN KEY (renavan_automovel) REFERENCES automovel(renavan);
@@ -95,10 +91,9 @@ ALTER TABLE reparo ADD CONSTRAINT reparo_cnpj_oficina_cep_oficina_fkey FOREIGN K
 
 -- NOT NULL do automovel
 ALTER TABLE automovel ALTER COLUMN placa SET NOT NULL;
-ALTER TABLE automovel ALTER COLUMN chassi SET NOT NULL;
 
 -- NOT NULL do seguro
--- ACredito que não faz sentido existir um seguro que não possui segurado, perito ou automovel que ele está         segurando
+-- ACredito que não faz sentido existir um seguro que não possui segurado, perito ou automovel que ele está assegurando
 ALTER TABLE seguro ALTER COLUMN cpf_segurado SET NOT NULL;
 ALTER TABLE seguro ALTER COLUMN cpf_perito SET NOT NULL;
 ALTER TABLE seguro ALTER COLUMN renavan_automovel SET NOT NULL;
@@ -115,8 +110,7 @@ CREATE TABLE automovel (
     renavan CHAR(17) PRIMARY KEY,
     placa CHAR(7) NOT NULL,
     modelo VARCHAR(20),
-    ano_fabricacao INTEGER,
-    chassi CHAR(17) NOT NULL
+    ano_fabricacao INTEGER
 );
 
 CREATE TABLE segurado (
@@ -185,3 +179,7 @@ CREATE TABLE reparo (
     CONSTRAINT reparo_pkey PRIMARY KEY (id_reparo),
     CONSTRAINT reparo_cnpj_oficina_cep_oficina_fkey FOREIGN KEY (cnpj_oficina, cep_oficina) REFERENCES oficina(cnpj, cep)
 );
+
+
+-- Questão 10: Não mudaria nada desse roteiro pelo motivo de não conhecer nada de carro.
+
